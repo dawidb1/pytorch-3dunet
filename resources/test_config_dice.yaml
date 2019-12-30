@@ -9,7 +9,7 @@ model:
   # number of output channels
   out_channels: 1
   # determines the order of operators in a single layer (gcr - GroupNorm+Conv3d+ReLU)
-  layer_order: gcr
+  layer_order: crg
   # feature maps scale factor
   f_maps: 32
   # number of groups in the groupnorm
@@ -34,10 +34,10 @@ datasets:
   num_workers: 8
   # paths to the datasets
   test_path:
-    - 'resources/random_label3D.h5'
+    - 'C:\dane\3dunet-data\kostka11_4_maski_h5\kostka11_aorta_dwunastnica_trzustka_watroba.h5'
   transformer:
     test:
       raw:
-        - name: Standardize
+        - name: Normalize
         - name: ToTensor
           expand_dims: true

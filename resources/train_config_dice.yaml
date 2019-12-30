@@ -7,9 +7,9 @@ model:
   # number of input channels to the model
   in_channels: 1
   # number of output channels
-  out_channels: 1
+  out_channels: 4
   # determines the order of operators in a single layer (gcr - GroupNorm+Conv3d+ReLU)
-  layer_order: gcr
+  layer_order: crg
   # feature maps scale factor
   f_maps: 32
   # number of groups in the groupnorm
@@ -26,15 +26,15 @@ trainer:
   validate_after_iters: 20
   # how many iterations between tensorboard logging
   log_after_iters: 20
-  # max number of epochs
-  epochs: 50
-  # max number of iterations
-  iters: 100000
+  # max number of epochs (50)
+  epochs: 10
+  # max number of iterations (100 000)
+  iters: 10000
   # model with higher eval score is considered better
   eval_score_higher_is_better: True
 # optimizer configuration
 optimizer:
-  # initial learning rate
+  # initial learning rate (0.0002 / 0.005)
   learning_rate: 0.0002
   # weight decay
   weight_decay: 0.0001
@@ -71,17 +71,19 @@ loaders:
   label_internal_path: label
   # paths to the training datasets
   train_path:
-    - 'resources/random_label3D.h5'
+    - 'C:\dane\3dunet-data\kostka11_4_maski_h5\kostka11_aorta_dwunastnica_trzustka_watroba.h5'
+    - 'C:\dane\3dunet-data\kostka12_4_maski_h5\kostka12_aorta_dwunastnica_trzustka_watroba.h5'
+    - 'C:\dane\3dunet-data\kostka13_4_maski_h5\kostka13_aorta_dwunastnica_trzustka_watroba.h5'
   # paths to the validation datasets
   val_path:
-    - 'resources/random_label3D.h5'
+    - 'C:\dane\3dunet-data\kostka11_4_maski_h5\kostka11_aorta_dwunastnica_trzustka_watroba.h5'
   # how many subprocesses to use for data loading
   num_workers: 4
   # data transformations/augmentations
   transformer:
     train:
       raw:
-        - name: Standardize
+        - name: Normalize
         - name: RandomFlip
         - name: RandomRotate90
         - name: RandomRotate
@@ -111,7 +113,7 @@ loaders:
           dtype: 'long'
     test:
       raw:
-        - name: Standardize
+        - name: Normalize
         - name: ToTensor
           expand_dims: true
       label:
