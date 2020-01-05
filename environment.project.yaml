@@ -1,0 +1,21 @@
+name: 3dunet
+
+channels:
+  - conda-forge
+  - pytorch
+
+dependencies:
+  - python 3.7
+  - http://download.pytorch.org/whl/cu90/torch-0.4.1-cp36-cp36m-win_amd64.whl
+  - numpy
+  - tqdm
+  - pylint
+  - torchvision
+  - tensorboardx
+  - h5py
+  - scipy
+  - scikit-image
+  - scikit-learn
+  - pyyaml
+  - hdbscan
+  - pytest
