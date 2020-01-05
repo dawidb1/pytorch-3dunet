@@ -23,7 +23,7 @@ predictor:
 # specify the test datasets
 datasets:
   # patch size given to the network (adapt to fit in your GPU mem)
-  patch: [64, 128, 128]
+  patch: [32, 64, 64]
   # stride between patches (make sure the the patches overlap in order to get smoother prediction maps)
   stride: [32, 100, 100]
   # use mirror padding

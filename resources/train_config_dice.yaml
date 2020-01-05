@@ -26,10 +26,10 @@ trainer:
   validate_after_iters: 20
   # how many iterations between tensorboard logging
   log_after_iters: 20
-  # max number of epochs
-  epochs: 50
-  # max number of iterations
-  iters: 100000
+  # max number of epochs (50)
+  epochs: 3
+  # max number of iterations (100000)
+  iters: 10000
   # model with higher eval score is considered better
   eval_score_higher_is_better: True
 # optimizer configuration
